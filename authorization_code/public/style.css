@@ -1,0 +1,30 @@
+
+  body{
+	background-color: #3e3e3e;
+	font-family: 'Abel', sans-serif;
+  }
+  
+  ul{
+	list-style-type: none;
+  }
+  .container{
+	padding: 300px 0;
+	margin:auto;
+	width: 50%;
+	text-align: center;
+	color: #d6d6d6;
+}
+
+
+  button.mbutton  {
+  background-color: #5cb85c;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 20px;
+  margin:auto;
+  width: 20%;
+  }
+  
+  
+
