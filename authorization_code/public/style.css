@@ -16,7 +16,12 @@
 }
 
  .media{
- border-radius: 20px;
+ margin: 25px 25px;
+ height:600px;
+ width:840px;
+ border:2px solid #ccc; 
+ border-radius: 10px; 
+ overflow:auto;
  }
   
   button.mbutton  {

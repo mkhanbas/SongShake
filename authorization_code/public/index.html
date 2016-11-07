@@ -3,7 +3,8 @@
   <head>
     <title>SongShake</title>
     <link rel="stylesheet" type="text/css" href="style.css">	
-	<link type="text/css" href="style/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+	<link type="text/css" href="jquery.jscrollpane.css" rel="stylesheet" media="all" />
+	<link type="text/css" href="jquery.jscrollpane.lozenge.css" rel="stylesheet" media="all" />
     <style type="text/css">
       #login, #loggedin {
         display: none;
@@ -40,16 +41,16 @@
 
     <script id="user-song-template" type="text/x-handlebars-template">
       <h1>Current Saved Tracks:</h1>
-      <div class="media" style="margin: 25px 25px;height:600px;width:840px;border:2px solid #ccc; overflow:auto;">
+      <div class="media">
         
         <div class="media-body">
-          <ul class="lib_list">
+		  
 		  {{#each items}}
 		  {{#with track}}
-			<li>{{{name}}}</li>
+			<p>{{{name}}}</p>
 		  {{/with}}
 		  {{/each}}
-		  </ul>
+		  
         </div>
 	  
       </div>
@@ -60,13 +61,11 @@
       <div class="media">
         
         <div class="media-body">
-          <ul class="lib_list">
 		  {{#each items}}
 		  {{#with track}}
-			<li>{{{name}}}</li>
+			<p>{{{name}}}</p>
 		  {{/with}}
 		  {{/each}}
-		  </ul>
         </div>
 	  
       </div>
@@ -77,9 +76,9 @@
     </script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script type="text/javascript" src="script/jquery.mousewheel.js"></script>
-	<script type="text/javascript" src="script/jquery.jscrollpane.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="jquery.jscrollpane.min.js"></script>
     <script>		
 	  var nextUrl = 'https://api.spotify.com/v1/me/tracks?limit=50';
       var prevUrl = 'null';
@@ -113,9 +112,7 @@
             refresh_token = params.refresh_token,
             error = params.error;
 		
-		$(function(){
-			$('.media').jScrollPane();
-            });
+		
         if (error) {
           alert('There was an error during the authentication');
         } else {
@@ -136,8 +133,9 @@
                   userProfilePlaceholder.innerHTML = userProfileTemplate(response);
 				  console.log(nextUrl);
                   nextUrl = response.next;
-				  prevUrl = response.previous;		  	  
+				  prevUrl = response.previous; 
 				  
+				  $('.media').jScrollPane();
                 }
             });
             
