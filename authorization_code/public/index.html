@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>SongShake</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">	
+	<link type="text/css" href="style/jquery.jscrollpane.css" rel="stylesheet" media="all" />
     <style type="text/css">
       #login, #loggedin {
         display: none;
@@ -77,6 +78,8 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="script/jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="script/jquery.jscrollpane.min.js"></script>
     <script>		
 	  var nextUrl = 'https://api.spotify.com/v1/me/tracks?limit=50';
       var prevUrl = 'null';
@@ -109,6 +112,10 @@
         var access_token = params.access_token,
             refresh_token = params.refresh_token,
             error = params.error;
+		
+		$(function(){
+			$('.media').jScrollPane();
+            });
         if (error) {
           alert('There was an error during the authentication');
         } else {
