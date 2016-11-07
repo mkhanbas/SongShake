@@ -8,14 +8,17 @@
 	list-style-type: none;
   }
   .container{
-	padding: 300px 0;
+	padding: 150px 0;
 	margin:auto;
 	width: 50%;
 	text-align: center;
 	color: #d6d6d6;
 }
 
-
+ .media{
+ border-radius: 20px;
+ }
+  
   button.mbutton  {
   background-color: #5cb85c;
   border: none;

@@ -33,12 +33,13 @@
         </div>
         <button class="mbutton" id="prev-50">Prev 50 Songs</button>
         <button class="mbutton" id="next-50">Next 50 Songs</button>
+		
       </div>
     </div>
 
     <script id="user-song-template" type="text/x-handlebars-template">
       <h1>Current Saved Tracks:</h1>
-      <div class="media">
+      <div class="media" style="margin: 25px 25px;height:600px;width:840px;border:2px solid #ccc; overflow:auto;">
         
         <div class="media-body">
           <ul class="lib_list">
@@ -71,11 +72,7 @@
     </script>
 
     <script id="oauth-template" type="text/x-handlebars-template">
-      <h2>oAuth info</h2>
-      <dl class="dl-horizontal">
-        <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
-        <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}></dd>
-      </dl>
+     
     </script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
