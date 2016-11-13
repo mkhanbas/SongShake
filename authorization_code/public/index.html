@@ -19,9 +19,15 @@
     </style>
 	<link href="https://fonts.googleapis.com/css?family=Abel" type="text/css" rel="stylesheet"> 
   </head>
+  <header role = "banner">
 
+  </header>
   <body>
     <div class="container">
+	
+		  <a href="#"> 
+   <img src="logo.png" style="margin:0px auto;display:block;" height="12%" width="12%" alt="Waffle Inc." />  
+          </a> 
       <div id="login">
         <h1>Welcome to SongShake</h1>
         <a href="/login">
@@ -33,9 +39,10 @@
         </div>
         <div id="oauth">
         </div>
+		<div id = "buttons">
         <button class="mbutton" id="prev-50">Prev 50 Songs</button>
         <button class="mbutton" id="next-50">Next 50 Songs</button>
-		
+		</div>
       </div>
     </div>
 
@@ -48,6 +55,7 @@
 		  {{#each items}}
 		  {{#with track}}
 			<p>{{{name}}}</p>
+			<div style="width: 100%; height: 2px; background: #275927; overflow: hidden;"></div>
 		  {{/with}}
 		  {{/each}}
 		  
@@ -135,7 +143,13 @@
                   nextUrl = response.next;
 				  prevUrl = response.previous; 
 				  
-				  $('.media').jScrollPane();
+				  $('.media').jScrollPane(
+					{
+						showArrows: true,
+						horizontalGutter: 4
+					}
+				  
+				  );
                 }
             });
             

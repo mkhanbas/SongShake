@@ -1,4 +1,5 @@
 
+
   body{
 	background-color: #3e3e3e;
 	font-family: 'Abel', sans-serif;
@@ -8,24 +9,30 @@
 	list-style-type: none;
   }
   .container{
-	padding: 150px 0;
+	padding: 20px 0;
 	margin:auto;
 	width: 50%;
 	text-align: center;
 	color: #d6d6d6;
 }
 
+#login{
+	padding: 200px 0;
+}
  .media{
- margin: 25px 25px;
+ background-color: #242424;
+ margin: auto;
  height:600px;
  width:840px;
- border:2px solid #ccc; 
+ border:2px solid #242424; 
  border-radius: 10px; 
- overflow:auto;
+ box-shadow: 10px 10px 5px -1px #000000;
+ overflow:auto; 
  }
   
   button.mbutton  {
-  background-color: #5cb85c;
+  padding: 15px;
+  background-color: #367c36;
   border: none;
   color: white;
   border-radius: 5px;
@@ -33,6 +40,16 @@
   margin:auto;
   width: 20%;
   }
-  
-  
+#prev-50{
+	position:relative;
+	left: -2%;
+}
+#next-50{
+	position:relative;
+	left: 2%;
+}
+#buttons{
+	padding: 20px;
+
+}
 
