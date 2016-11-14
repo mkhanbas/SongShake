@@ -72,6 +72,10 @@ button.mbutton:after {
 button.mbutton:hover:before, button.mbutton:hover:after {
   opacity: 1;
 }
+button.mbutton:active:before, button.mbutton:active:after {
+  transition-duration: 0.1s;
+  opacity: 0;
+}
 button.mbutton:hover{
 	color:#21b754;
 	background: #242424;
@@ -79,6 +83,10 @@ button.mbutton:hover{
 button.mbutton:disabled{
 	opacity: 0.5;
 	pointer-events: none;
+}
+button.mbutton:active{
+	box-shadow: inset 0px 0px 30px 0px rgba(0,0,0,1);
+
 }
 #next-50{
 	position:relative;
