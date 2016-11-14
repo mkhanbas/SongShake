@@ -18,6 +18,7 @@
 	  
     </style>
 	<link href="https://fonts.googleapis.com/css?family=Abel" type="text/css" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Cairo" type="text/css" rel="stylesheet"> 
   </head>
   <header role = "banner">
 
@@ -31,7 +32,7 @@
       <div id="login">
         <h1>Welcome to SongShake</h1>
         <a href="/login">
-		<button class="mbutton"		>
+		<button class="mbutton">
 		Log in with Spotify</button></a>
       </div>
       <div id="loggedin">
@@ -55,7 +56,7 @@
 		  {{#each items}}
 		  {{#with track}}
 			<p>{{{name}}}</p>
-			<div style="width: 100%; height: 2px; background: #275927; overflow: hidden;"></div>
+			<div style="width: 100%; height: 2px; background: #18813b; overflow: hidden;"></div>
 		  {{/with}}
 		  {{/each}}
 		  
@@ -142,7 +143,7 @@
 				  console.log(nextUrl);
                   nextUrl = response.next;
 				  prevUrl = response.previous; 
-				  
+				  document.getElementById('prev-50').disabled = true;
 				  $('.media').jScrollPane(
 					{
 						showArrows: true,
@@ -202,10 +203,27 @@
 				headers: {'Authorization': 'Bearer ' + access_token},
 				success: function(response) {					
 					userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+				    $('.media').jScrollPane(
+					{
+						showArrows: true,
+						horizontalGutter: 4
+					});
 					nextUrl = response.next;
 				    prevUrl = response.previous;	
+					if(nextUrl == null){						
+						document.getElementById('next-50').disabled = true;
+					}
+					else{
+						document.getElementById('next-50').disabled = false;
 					
-				  $('.media').jScrollPane();
+					}
+					if(prevUrl == null){						
+					    document.getElementById('prev-50').disabled = true;
+					}
+					else{
+						document.getElementById('prev-50').disabled = false;
+					
+					}
 				}
 				});
 			}, false);
@@ -216,11 +234,27 @@
 				url: prevUrl,
 				headers: {'Authorization': 'Bearer ' + access_token},
 				success: function(response) {					
-					userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+					userProfilePlaceholder.innerHTML = userProfileTemplate(response);					
+				    $('.media').jScrollPane(
+					{
+						showArrows: true,
+						horizontalGutter: 4
+					});
 					nextUrl = response.next;
 				    prevUrl = response.previous;	
+					if(nextUrl == null){						
+						document.getElementById('next-50').disabled = true;
+					}
+					else{
+						document.getElementById('next-50').disabled = false;
 					
-				  $('.media').jScrollPane();
+					}
+					if(prevUrl == null){						
+					    document.getElementById('prev-50').disabled = true;
+					}
+					else{
+						document.getElementById('prev-50').disabled = false;					
+					}
 				}
 				});
 			}, false);

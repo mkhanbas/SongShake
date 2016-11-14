@@ -19,13 +19,13 @@
 .jspTrack .jspHover,
 .jspDrag:hover
 {
-	background: #8B8B9F;
+	background: #cc3d00;
 }
 
 
 .jspArrow
 {
-	background: url(../image/ui-icons_222222_256x240.png) no-repeat;
+	background: url('../image/ui-icons_222222_256x240.png') no-repeat;
 	
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
