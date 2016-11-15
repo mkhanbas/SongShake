@@ -8,6 +8,7 @@
   ul{
 	list-style-type: none;
   }
+  
   .container{
 	padding: 10px 0;
 	margin:auto;
@@ -17,7 +18,16 @@
 }
 
 #login{
-	padding: 200px 0;
+	padding: 150px 0;	
+	font-size:50px;
+}
+
+#intro{
+	font-size: 22px;
+	font-family: 'Cairo', sans-serif;
+	width: 44%;
+	margin:auto;
+	padding:20px;
 }
  .media{
  background-color: #242424;
@@ -73,7 +83,7 @@ button.mbutton:hover:before, button.mbutton:hover:after {
   opacity: 1;
 }
 button.mbutton:active:before, button.mbutton:active:after {
-  transition-duration: 0.1s;
+  transition-duration: 0.2s;
   opacity: 0;
 }
 button.mbutton:hover{
