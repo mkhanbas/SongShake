@@ -38,8 +38,60 @@
  border-radius: 10px; 
  box-shadow: 10px 10px 5px -1px #000000;
  overflow:auto; 
- }
  
+ }
+ .media-body{
+	font-size: 19px;
+	column-count:3;
+	column-width:5px;
+ }
+ th{
+	font-size: 22px;
+ }
+  table {
+  border-collapse: collapse;
+  table-layout:fixed;
+  width: 100%;  
+  white-space: nowrap;
+  
+}
+  th{
+	border-left: 2px solid #737373;
+	border-bottom: 2px solid #ff6624;
+	text-align:center;
+	text-indent: 0;
+  }
+  th:first-child{
+	border-left:0;
+  }
+  .songCol{
+	width: 35%;
+  }
+  .artistCol{
+	width: 30%;
+  }
+  .albumCol{
+	width:35%; 	
+  }
+  tr {
+    border-bottom: 2px solid #18813b;
+	line-height: 50px;
+	text-align:left;
+    text-indent: 0.5em;
+  }  
+  tr:last-child{
+	border-bottom:0;
+  }
+  td{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	border-left: 2px solid #737373;
+  }
+  td:first-child{
+  
+	border-left: 0;
+  }
   button.mbutton {
   border-top: 1px solid #ff6624;
   padding: 8px;

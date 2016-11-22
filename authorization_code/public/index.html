@@ -61,14 +61,34 @@
       <div class="media">
         
         <div class="media-body">
-		  
+		<table>
+		  <thead>
+			<tr>
+			  <th class="songCol">Song</th>
+			  <th class="artistCol">Artist</th>
+			  <th class="albumCol">Album</th>
+			</tr>
+		  </thead>
+		  <tbody>
 		  {{#each items}}
 		  {{#with track}}
-			<p>{{{name}}}</p>
-			<div style="width: 100%; height: 2px; background: #18813b; overflow: hidden;"></div>
+			<tr>
+			  <td>{{name}}</td>
+			  <td>
+				  {{#each artists}}
+				  {{#if @first}}
+				  <span>{{name}}</span>
+				  {{else}}			
+				  <span>, {{name}}</span>
+				  {{/if}}
+				  {{/each}}			
+			  </td>
+			  <td>{{album.name}}</td>
+			</tr>	
 		  {{/with}}
-		  {{/each}}
-		  
+		  {{/each}}			
+		  </tbody>
+		</table>			
         </div>
 	  
       </div>
@@ -79,11 +99,34 @@
       <div class="media">
         
         <div class="media-body">
+		  <table>
+		  <thead>
+			<tr>
+			  <th class="songCol">Song</th>
+			  <th class="ArtistCol">Artist</th>
+			  <th class="AlbumCol">Album</th>
+			</tr>
+		  </thead>
+		  <tbody>
 		  {{#each items}}
 		  {{#with track}}
-			<p>{{{name}}}</p>
+			<tr>
+			  <td>{{name}}</td>
+			  <td>
+				  {{#each artists}}
+				  {{#if @first}}
+				  <span>{{name}}</span>
+				  {{else}}			
+				  <span>, {{name}}</span>
+				  {{/if}}
+				  {{/each}}			
+			  </td>
+			  <td>{{album.name}}</td>
+			</tr>	
 		  {{/with}}
-		  {{/each}}
+		  {{/each}}			
+		  </tbody>
+		</table>
         </div>
 	  
       </div>
