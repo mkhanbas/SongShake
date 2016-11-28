@@ -59,16 +59,20 @@
 	<img src="logo.png" style="margin:0px auto;display:block;padding: 10px;" height="12%" width="12%" alt="Waffle Inc." />
       <h1>Current Saved Tracks:</h1>
       <div class="media">
-        
-        <div class="media-body">
-		<table>
-		  <thead>
+	  
+        <table class = "headTable">
+		<thead>
 			<tr>
 			  <th class="songCol">Song</th>
 			  <th class="artistCol">Artist</th>
 			  <th class="albumCol">Album</th>
 			</tr>
-		  </thead>
+			</thead>
+		  </table>
+        <div class="media-body">
+		
+		<table class = "baseTable">
+		  
 		  <tbody>
 		  {{#each items}}
 		  {{#with track}}
@@ -196,9 +200,9 @@
                   nextUrl = response.next;
 				  prevUrl = response.previous; 
 				  document.getElementById('prev-50').disabled = true;
-				  $('.media').jScrollPane(
+				  $('.media-body').jScrollPane(
 					{
-						showArrows: true,
+						showArrows: false,
 						horizontalGutter: 4
 					}
 				  
@@ -255,9 +259,9 @@
 				headers: {'Authorization': 'Bearer ' + access_token},
 				success: function(response) {					
 					userProfilePlaceholder.innerHTML = userProfileTemplate(response);
-				    $('.media').jScrollPane(
+				    $('.media-body').jScrollPane(
 					{
-						showArrows: true,
+						showArrows: false,
 						horizontalGutter: 4
 					});
 					nextUrl = response.next;
@@ -287,9 +291,9 @@
 				headers: {'Authorization': 'Bearer ' + access_token},
 				success: function(response) {					
 					userProfilePlaceholder.innerHTML = userProfileTemplate(response);					
-				    $('.media').jScrollPane(
+				    $('.media-body').jScrollPane(
 					{
-						showArrows: true,
+						showArrows: false,
 						horizontalGutter: 4
 					});
 					nextUrl = response.next;
