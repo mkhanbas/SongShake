@@ -54,7 +54,6 @@
   
 }
   th{
-	border-left: 2px solid #737373;
 	border-bottom: 2px solid #ff6624;
 	text-align:center;
 	text-indent: 0;
@@ -62,6 +61,7 @@
   th:first-child{
 	border-left:0;
   }
+
   .songCol{
 	width: 35%;
   }
@@ -74,17 +74,27 @@
   tr {
     border-bottom: 2px solid #18813b;
 	line-height: 50px;
-	text-align:left;
-    text-indent: 0.5em;
+	text-align:center;
   }  
   tr:last-child{
 	border-bottom:0;
+  }
+  tbody tr:hover{
+	background: #1a1a1a;
+	color: #21b754;
+  }
+  tbody tr:active{
+	color: #ff6624;
+	border-left: 2px solid #ff6624;
+	border-right: 1px solid #ff6624;
+  }
+  tr:after{
+	border-left: 2px solid #ff6624;
   }
   td{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-	border-left: 2px solid #737373;
   }
   td:first-child{
   
