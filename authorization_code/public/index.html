@@ -279,14 +279,14 @@
 					curPage++;
 				    var pg = calcPage(curPage,totPages);
 				    document.getElementById('pgNum').innerHTML = pg;
-					if(nextUrl == null){						
+					if(curPage == totPages){						
 						document.getElementById('next-50').disabled = true;
 					}
 					else{
 						document.getElementById('next-50').disabled = false;
 					
 					}
-					if(prevUrl == null){						
+					if(curPage == 1){						
 					    document.getElementById('prev-50').disabled = true;
 					}
 					else{
@@ -314,14 +314,14 @@
 					curPage--;
 				    var pg = calcPage(curPage,totPages);
 				    document.getElementById('pgNum').innerHTML = pg;	
-					if(nextUrl == null){						
+					if(curPage == totPages){						
 						document.getElementById('next-50').disabled = true;
 					}
 					else{
 						document.getElementById('next-50').disabled = false;
 					
 					}
-					if(prevUrl == null){						
+					if(curPage == 1){						
 					    document.getElementById('prev-50').disabled = true;
 					}
 					else{
