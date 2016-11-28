@@ -60,13 +60,13 @@
       <h1>Current Saved Tracks: </h1> <h2 id = "pgNum"></h2>
 
       <div class="media">
-	  
         <table class = "headTable">
+	  
 		<thead>
 			<tr>
-			  <th class="songCol">Song</th>
-			  <th class="artistCol">Artist</th>
-			  <th class="albumCol">Album</th>
+			  <th>Song</th>
+			  <th>Artist</th>
+			  <th>Album</th>
 			</tr>
 			</thead>
 		  </table>
@@ -75,11 +75,14 @@
 		<table class = "baseTable">
 		  
 		  <tbody>
+		  
 		  {{#each items}}
 		  {{#with track}}
+		  
 			<tr>
-			  <td>{{name}}</td>
-			  <td>
+			<td class="bullCol">&#8226;</td>
+			  <td class="songCol">{{name}}</td>
+			  <td class="artistCol">
 				  {{#each artists}}
 				  {{#if @first}}
 				  <span>{{name}}</span>
@@ -88,10 +91,10 @@
 				  {{/if}}
 				  {{/each}}			
 			  </td>
-			  <td>{{album.name}}</td>
+			  <td class="albumCol">{{album.name}}</td>
 			</tr>	
 		  {{/with}}
-		  {{/each}}			
+		  {{/each}}	
 		  </tbody>
 		</table>			
         </div>
@@ -217,6 +220,15 @@
 					}
 				  
 				  );
+				  $('tbody tr').click(function(){
+				if($(this).hasClass('selected')){
+					$(this).find(".bullCol").css('visibility','hidden')  
+					$(this).removeClass('selected')
+				} else {
+					$(this).find("td").css('visibility','visible')  
+					$(this).addClass('selected')
+				}
+			});
                 }
             });
             
@@ -279,14 +291,14 @@
 					curPage++;
 				    var pg = calcPage(curPage,totPages);
 				    document.getElementById('pgNum').innerHTML = pg;
-					if(curPage == totPages){						
+					if(nextUrl == null){						
 						document.getElementById('next-50').disabled = true;
 					}
 					else{
 						document.getElementById('next-50').disabled = false;
 					
 					}
-					if(curPage == 1){						
+					if(prevUrl == null){						
 					    document.getElementById('prev-50').disabled = true;
 					}
 					else{
@@ -314,14 +326,14 @@
 					curPage--;
 				    var pg = calcPage(curPage,totPages);
 				    document.getElementById('pgNum').innerHTML = pg;	
-					if(curPage == totPages){						
+					if(nextUrl == null){						
 						document.getElementById('next-50').disabled = true;
 					}
 					else{
 						document.getElementById('next-50').disabled = false;
 					
 					}
-					if(curPage == 1){						
+					if(prevUrl == null){						
 					    document.getElementById('prev-50').disabled = true;
 					}
 					else{
@@ -330,6 +342,8 @@
 				}
 				});
 			}, false);
+			
+			
 		
 			
 		})

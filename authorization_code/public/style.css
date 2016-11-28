@@ -74,19 +74,32 @@
   th{
 	border-bottom: 2px solid #ff6624;
 	text-align:center;
-	text-indent: 0;
 	width: 60%;
   }
-  
-
+  .headTable th{  
+	
+	text-indent: 1em;
+  }
+  .headTable th:first-child{  
+	
+	text-indent: 1.5em;
+  }
+  .headTable th:last-child{  
+	
+	text-indent: 0em;
+  }
+  .bullCol{
+	width: 2%;
+	visibility: hidden;
+  }
   .songCol{
-	width: 35%;
+	width: 34%;
   }
   .artistCol{
 	width: 30%;
   }
   .albumCol{
-	width:35%; 	
+	width:34%; 	
   }
   tr{
 	line-height: 50px;
@@ -102,15 +115,13 @@
 	background: #1a1a1a;
 	color: #21b754;
   }
-  tbody tr:first-child:active{
+  .baseTable tr:first-child.selected{
+	background: #1a1a1a;
 	color: #ff6624;
-	border-left: 1px solid #ff6624;
-	border-right: 1px solid #ff6624;
   }
-  tbody tr:active{
+  .baseTable tr.selected{
+	background: #1a1a1a;
 	color: #ff6624;
-	border-left: 2px solid #ff6624;
-	border-right: 1px solid #ff6624;
   }
   td{
     white-space: nowrap;
