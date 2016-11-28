@@ -56,8 +56,9 @@
     </div>
 
     <script id="user-song-template" type="text/x-handlebars-template">
-	<img src="logo.png" style="margin:0px auto;display:block;padding: 10px;" height="12%" width="12%" alt="Waffle Inc." />
-      <h1>Current Saved Tracks:</h1>
+	<img src="logo.png" style="margin:0px auto;display:block;padding: 0px;" height="12%" width="12%" alt="Waffle Inc." />
+      <h1>Current Saved Tracks: </h1> <h2 id = "pgNum"></h2>
+
       <div class="media">
 	  
         <table class = "headTable">
@@ -147,6 +148,12 @@
     <script>		
 	  var nextUrl = 'https://api.spotify.com/v1/me/tracks?limit=50';
       var prevUrl = 'null';
+	  var totPages = 0;
+	  var curPage = 1;
+	  function calcPage(val, val1){
+		return "(" + val + "/" + val1 + ")";
+	  
+	  }
       (function() {
 
         /**
@@ -199,6 +206,9 @@
 				  console.log(nextUrl);
                   nextUrl = response.next;
 				  prevUrl = response.previous; 
+				  totPages = Math.ceil(response.total / 50);
+				  var pg = calcPage(curPage,totPages);
+				  document.getElementById('pgNum').innerHTML = pg;
 				  document.getElementById('prev-50').disabled = true;
 				  $('.media-body').jScrollPane(
 					{
@@ -265,7 +275,10 @@
 						horizontalGutter: 4
 					});
 					nextUrl = response.next;
-				    prevUrl = response.previous;	
+				    prevUrl = response.previous;		
+					curPage++;
+				    var pg = calcPage(curPage,totPages);
+				    document.getElementById('pgNum').innerHTML = pg;
 					if(nextUrl == null){						
 						document.getElementById('next-50').disabled = true;
 					}
@@ -297,7 +310,10 @@
 						horizontalGutter: 4
 					});
 					nextUrl = response.next;
-				    prevUrl = response.previous;	
+				    prevUrl = response.previous;
+					curPage--;
+				    var pg = calcPage(curPage,totPages);
+				    document.getElementById('pgNum').innerHTML = pg;	
 					if(nextUrl == null){						
 						document.getElementById('next-50').disabled = true;
 					}

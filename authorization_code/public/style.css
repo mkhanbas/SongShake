@@ -10,12 +10,26 @@
   }
   
   .container{
-	padding: 10px 0;
+	padding: 0px 0;
 	margin:auto;
 	width: 50%;
 	text-align: center;
 	color: #d6d6d6;
 }
+	h1{
+		display:inline;
+		position: relative;
+		left: 1em;
+	}
+	h2{
+		display:inline;
+		float:right;
+		margin: 0px 0px 0px 0px;
+		position: relative;
+		right: 2.5em;
+		top: .35em;
+	}
+	
 
 #login{
 	padding: 150px 0;	
@@ -41,7 +55,7 @@
  }
  .media-body{
 	font-size: 19px;
-	height:600px;
+	height:570px;
 	overflow:auto; 
  }
  th{
@@ -62,7 +76,6 @@
 	text-align:center;
 	text-indent: 0;
 	width: 60%;
-	line-height:50px;
   }
   
 
@@ -75,10 +88,12 @@
   .albumCol{
 	width:35%; 	
   }
-  tbody tr {
-    border-bottom: 2px solid #18813b;
+  tr{
 	line-height: 50px;
 	text-align:center;
+  }
+  tbody tr {
+    border-bottom: 2px solid #18813b;	
   }  
   tbody tr:last-child{
 	border-bottom:0;
