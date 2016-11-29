@@ -78,8 +78,9 @@
 		  
 		  {{#each items}}
 		  {{#with track}}
-		  
-			<tr>
+			{{#with this.album.images}}
+			<tr href="{{this.[1].url}}">
+			{{/with}}
 			<td class="bullCol">&#8226;</td>
 			  <td class="songCol">{{name}}</td>
 			  <td class="artistCol">
