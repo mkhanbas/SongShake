@@ -90,10 +90,16 @@
   }
   .bullCol{
 	width: 2%;
-	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+	text-overflow: initial;
+	overflow: visible;
+	white-space: nowrap;
+
   }
   .songCol{
 	width: 34%;
+	
   }
   .artistCol{
 	width: 30%;

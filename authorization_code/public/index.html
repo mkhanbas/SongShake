@@ -102,43 +102,7 @@
       </div>
     </script>
 	
-	<script id="user-song-update" type="text/x-handlebars-template">
-      <h1>Current Saved Tracks:</h1>
-      <div class="media">
-        
-        <div class="media-body">
-		  <table>
-		  <thead>
-			<tr>
-			  <th class="songCol">Song</th>
-			  <th class="ArtistCol">Artist</th>
-			  <th class="AlbumCol">Album</th>
-			</tr>
-		  </thead>
-		  <tbody>
-		  {{#each items}}
-		  {{#with track}}
-			<tr>
-			  <td>{{name}}</td>
-			  <td>
-				  {{#each artists}}
-				  {{#if @first}}
-				  <span>{{name}}</span>
-				  {{else}}			
-				  <span>, {{name}}</span>
-				  {{/if}}
-				  {{/each}}			
-			  </td>
-			  <td>{{album.name}}</td>
-			</tr>	
-		  {{/with}}
-		  {{/each}}			
-		  </tbody>
-		</table>
-        </div>
-	  
-      </div>
-    </script>
+	
 
     <script id="oauth-template" type="text/x-handlebars-template">
      
@@ -220,15 +184,17 @@
 					}
 				  
 				  );
-				  $('tbody tr').click(function(){
+				  
+				   $('tbody tr').click(function(){
 				if($(this).hasClass('selected')){
-					$(this).find(".bullCol").css('visibility','hidden')  
+					$(this).find(".bullCol").css('opacity','0')  
 					$(this).removeClass('selected')
 				} else {
-					$(this).find("td").css('visibility','visible')  
+					$(this).find("td").css('opacity','1')  
 					$(this).addClass('selected')
 				}
 			});
+				  
                 }
             });
             
@@ -242,10 +208,10 @@
         }
       }	  
 	  )();
-	  
+	 
 	  (
 	  function()  {
-	  
+		
 		/**
          * Obtains parameters from the hash of the URL
          * @return Object
@@ -305,6 +271,15 @@
 						document.getElementById('prev-50').disabled = false;
 					
 					}
+					 $('tbody tr').click(function(){
+				if($(this).hasClass('selected')){
+					$(this).find(".bullCol").css('opacity','0')  
+					$(this).removeClass('selected')
+				} else {
+					$(this).find("td").css('opacity','1')  
+					$(this).addClass('selected')
+				}
+			});
 				}
 				});
 			}, false);
@@ -339,6 +314,15 @@
 					else{
 						document.getElementById('prev-50').disabled = false;					
 					}
+					 $('tbody tr').click(function(){
+				if($(this).hasClass('selected')){
+					$(this).find(".bullCol").css('opacity','0')  
+					$(this).removeClass('selected')
+				} else {
+					$(this).find("td").css('opacity','1')  
+					$(this).addClass('selected')
+				}
+			});
 				}
 				});
 			}, false);
