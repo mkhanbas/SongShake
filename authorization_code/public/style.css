@@ -3,11 +3,72 @@
   body{
 	background-color: #3e3e3e;
 	font-family: 'Abel', sans-serif;
+	overflow:hidden;
   }
   
   ul{
 	list-style-type: none;
   }
+  
+  
+  .song1{
+	 background-color: #242424; 
+	 background-image: url(https://i.scdn.co/image/f7419156fa0fdd8cd11ef96d19375ccfcdadb65a);
+	 background-size: 100% 100%;
+	 width:200px;
+	 height:200px;
+	 position: relative;
+	 left: -23.2em;
+	 bottom: 46.7em;
+	 border-radius: 10px; 
+	 box-shadow: 10px 10px 5px -1px #000000;
+	 opacity: 0;
+	 transition: opacity .6s linear;
+	 
+  }
+  .song2{
+	 background-color: #242424; 
+	 background-image: url(https://i.scdn.co/image/f7419156fa0fdd8cd11ef96d19375ccfcdadb65a);
+	 background-size: 100% 100%;
+	 width:200px;
+	 height:200px;
+	 position: relative;
+	 left: 70em;
+	 bottom: 59.2em;
+	 border-radius: 10px; 
+	 box-shadow: 10px 10px 5px -1px #000000;
+	 opacity: 0;
+	 transition: opacity .6s linear;
+  }
+  .song3{
+	 background-color: #242424; 
+	 background-image: url(https://i.scdn.co/image/f7419156fa0fdd8cd11ef96d19375ccfcdadb65a);
+	 background-size: 100% 100%;
+	 width:200px;
+	 height:200px;
+	 position: relative;
+	 left: -23.2em;
+	 bottom: 44.8em;
+	 border-radius: 10px; 
+	 box-shadow: 10px 10px 5px -1px #000000;
+	 opacity: 0;
+	 transition: opacity .6s linear;
+  }
+  .song4{
+	 background-color: #242424; 
+	 background-image: url(https://i.scdn.co/image/f7419156fa0fdd8cd11ef96d19375ccfcdadb65a);
+	 background-size: 100% 100%;
+	 width:200px;
+	 height:200px;
+	 position: relative;
+	 left: 70em;
+	 bottom: 57.3em;
+	 border-radius: 10px; 
+	 box-shadow: 10px 10px 5px -1px #000000;
+	 opacity: 0;
+	 transition: opacity .6s linear;
+  }
+ 
   
   .container{
 	padding: 0px 0;
@@ -71,8 +132,11 @@
   .headTable{
 	width:97.6%;
   }
-  th{
-	border-bottom: 2px solid #ff6624;
+  th{	
+	border-collapse: seperate;
+	border-image: linear-gradient(to right, #ff6624 0%, #ff6624 100%);
+	border: 2px solid transparent;
+	border-image-slice: 1;
 	text-align:center;
 	width: 60%;
   }
@@ -195,7 +259,7 @@ button.mbutton:active{
 }
 #next-50{
 	position:relative;
-	left: 2%;
+	left: 2%;	
 	}
 	#prev-50{
 	position:relative;
@@ -204,6 +268,6 @@ button.mbutton:active{
  
 #buttons{
 	padding: 30px;
-
+	
 }
 

@@ -46,14 +46,25 @@
       <div id="loggedin">
         <div id="user-profile">
         </div>
+		
         <div id="oauth">
         </div>
 		<div id = "buttons">
         <button class="mbutton" id="prev-50">Prev 50 Songs</button>
         <button class="mbutton" id="next-50">Next 50 Songs</button>
 		</div>
+			<div class = "song1">	
+			</div>
+			<div class = "song2">	
+			</div>
+			<div class = "song3">	
+			</div>
+			<div class = "song4">	
+			</div>
       </div>
     </div>
+	
+	
 
     <script id="user-song-template" type="text/x-handlebars-template">
 	<img src="logo.png" style="margin:0px auto;display:block;padding: 0px;" height="12%" width="12%" alt="Waffle Inc." />
@@ -78,9 +89,8 @@
 		  
 		  {{#each items}}
 		  {{#with track}}
-			{{#with this.album.images}}
-			<tr href="{{this.[1].url}}">
-			{{/with}}
+		  <tr href="{{this.album.images.[1].url}}" id="{{this.id}}">
+			
 			<td class="bullCol">&#8226;</td>
 			  <td class="songCol">{{name}}</td>
 			  <td class="artistCol">
@@ -101,6 +111,7 @@
         </div>
 	  
       </div>
+	  
     </script>
 	
 	
@@ -117,11 +128,56 @@
 	  var nextUrl = 'https://api.spotify.com/v1/me/tracks?limit=50';
       var prevUrl = 'null';
 	  var totPages = 0;
-	  var curPage = 1;
+	  var curPage = 1;	  
+	  function moveTile(i){		
+		$(".song" + (i + 1)).css("background-image", $(".song" + (i + 2)).css("background-image"));
+	  }
+	  function fadeTiles(tiles){
+		for(var i=0;i<tiles.length;i++){		
+			$(".song" + (i + 1)).css("opacity", "0");
+		}
+	  }
+	  function showTiles(tiles){
+		for(var i=0;i<tiles.length;i++){
+			$(".song" + (i + 1)).css("opacity", "1");
+		}
+	  }
 	  function calcPage(val, val1){
 		return "(" + val + "/" + val1 + ")";
 	  
 	  }
+	  var tiles = [];
+	  function fillTile(id, link){
+		if(tiles.length >= 4){
+			killTile(tiles[3]);
+			fillTile(id, link);
+		}
+		else{
+			tiles.push(id);
+			var tile = ".song" + tiles.length;
+			$(tile).attr('id', id);
+			$(tile).css("background-image", ("url(" + link + ")"));
+			$(tile).css("opacity", "1");
+		}
+	  }
+	  
+	 function killTile(id){	    
+		var songNum = tiles.indexOf(id);	
+		var lastTile = tiles.length - 1;
+		var card = ".song" + (songNum + 1);			
+		if(songNum < lastTile){
+			fadeTiles(tiles);	
+			tiles.splice(songNum, 1);
+			for(var i = songNum, len = tiles.length; i < len; i++){
+				moveTile(i);				
+			} 			
+			showTiles(tiles);
+		}
+		else{
+			tiles.pop();
+			$(card).css("opacity", "0");
+		}
+	 }
       (function() {
 
         /**
@@ -190,9 +246,11 @@
 				if($(this).hasClass('selected')){
 					$(this).find(".bullCol").css('opacity','0')  
 					$(this).removeClass('selected')
+					killTile($(this).attr("id"));
 				} else {
 					$(this).find("td").css('opacity','1')  
 					$(this).addClass('selected')
+					fillTile($(this).attr("id"),$(this).attr("href"));
 				}
 			});
 				  
@@ -276,9 +334,11 @@
 				if($(this).hasClass('selected')){
 					$(this).find(".bullCol").css('opacity','0')  
 					$(this).removeClass('selected')
+					killTile($(this).attr("id"));
 				} else {
 					$(this).find("td").css('opacity','1')  
 					$(this).addClass('selected')
+					fillTile($(this).attr("id"),$(this).attr("href"));
 				}
 			});
 				}
@@ -319,9 +379,11 @@
 				if($(this).hasClass('selected')){
 					$(this).find(".bullCol").css('opacity','0')  
 					$(this).removeClass('selected')
+					killTile($(this).attr("id"));
 				} else {
 					$(this).find("td").css('opacity','1')  
 					$(this).addClass('selected')
+					fillTile($(this).attr("id"),$(this).attr("href"));
 				}
 			});
 				}
