@@ -91,6 +91,10 @@
 		top: .35em;
 	}
 	
+#pgNumC{
+	opacity: 0;
+	transition: opacity .75s;
+}
 
 #login{
 	padding: 150px 0;	
@@ -171,9 +175,14 @@
   .albumCol{
 	width:34%; 	
   }
+  
+  .baseTable{
+	opacity: 0;
+	transition: opacity 0.75s;  
+  }
   tr{
 	line-height: 50px;
-	text-align:center;
+	text-align:center;	
   }
   tbody tr {
     border-bottom: 2px solid #18813b;	

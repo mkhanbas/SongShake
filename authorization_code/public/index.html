@@ -68,7 +68,7 @@
 
     <script id="user-song-template" type="text/x-handlebars-template">
 	<img src="logo.png" style="margin:0px auto;display:block;padding: 0px;" height="12%" width="12%" alt="Waffle Inc." />
-      <h1>Current Saved Tracks: </h1> <h2 id = "pgNum"></h2>
+      <h1>Current Saved Tracks: </h1> <h2 id = "pgNumT"></h2><h2 id = "pgNumC"></h2>
 
       <div class="media">
         <table class = "headTable">
@@ -129,6 +129,15 @@
       var prevUrl = 'null';
 	  var totPages = 0;
 	  var curPage = 1;	  
+	  function pageLoad(){
+		for(var i = 0; i < tiles.page.length; i++){
+			if(tiles.page[i] == curPage){
+				$('#' + tiles.id[i]).find("td").css('opacity','1')  
+				$('#' + tiles.id[i]).addClass('selected')
+			}
+		}
+	  
+	  }
 	  function moveTile(i){		
 		$(".song" + (i + 1)).css("background-image", $(".song" + (i + 2)).css("background-image"));
 	  }
@@ -143,38 +152,56 @@
 		}
 	  }
 	  function calcPage(val, val1){
-		return "(" + val + "/" + val1 + ")";
-	  
+		var pg = [
+			("(" + val),
+			("/" + val1 + ")")
+		];
+		return pg;	  
 	  }
-	  var tiles = [];
+	  var tiles = {
+		id: [],
+		page: []
+		};
+	  
 	  function fillTile(id, link){
-		if(tiles.length >= 4){
-			killTile(tiles[3]);
+		if(tiles.id.length >= 4){
+			killTile(tiles.id[3]);			
 			fillTile(id, link);
 		}
 		else{
-			tiles.push(id);
-			var tile = ".song" + tiles.length;
-			$(tile).attr('id', id);
+			tiles.id.push(id);
+			tiles.page.push(curPage);
+			var tile = ".song" + tiles.id.length;
 			$(tile).css("background-image", ("url(" + link + ")"));
 			$(tile).css("opacity", "1");
 		}
 	  }
 	  
 	 function killTile(id){	    
-		var songNum = tiles.indexOf(id);	
-		var lastTile = tiles.length - 1;
+		var songNum = tiles.id.indexOf(id);	
+		var lastTile = tiles.id.length - 1;
 		var card = ".song" + (songNum + 1);			
 		if(songNum < lastTile){
-			fadeTiles(tiles);	
-			tiles.splice(songNum, 1);
-			for(var i = songNum, len = tiles.length; i < len; i++){
-				moveTile(i);				
+			fadeTiles(tiles.id);	
+			var tid = tiles.id.splice(songNum, 1);
+			if(tiles.page[songNum] == curPage && $('#' + tid).hasClass('selected')){
+					$('#' + tid).find(".bullCol").css('opacity','0');  
+					$('#' + tid).removeClass('selected');
+			}
+			tiles.page.splice(songNum, 1);
+			for(var i = songNum, len = tiles.id.length; i < len; i++){
+				moveTile(i);	
+				
 			} 			
-			showTiles(tiles);
+			showTiles(tiles.id);
 		}
 		else{
-			tiles.pop();
+			var tid = tiles.id.pop();
+			var relPage = tiles.page.pop();
+			if(relPage == curPage && $('#' + tid).hasClass('selected')){
+					$('#' + tid).find(".bullCol").css('opacity','0');  
+					$('#' + tid).removeClass('selected');
+			}
 			$(card).css("opacity", "0");
 		}
 	 }
@@ -232,7 +259,9 @@
 				  prevUrl = response.previous; 
 				  totPages = Math.ceil(response.total / 50);
 				  var pg = calcPage(curPage,totPages);
-				  document.getElementById('pgNum').innerHTML = pg;
+				  document.getElementById('pgNumC').innerHTML = pg[0];				  		  
+				  document.getElementById('pgNumC').style.opacity = "1";
+				  document.getElementById('pgNumT').innerHTML = pg[1];		
 				  document.getElementById('prev-50').disabled = true;
 				  $('.media-body').jScrollPane(
 					{
@@ -241,7 +270,7 @@
 					}
 				  
 				  );
-				  
+				  $('.baseTable').css("opacity","1");				  
 				   $('tbody tr').click(function(){
 				if($(this).hasClass('selected')){
 					$(this).find(".bullCol").css('opacity','0')  
@@ -315,7 +344,10 @@
 				    prevUrl = response.previous;		
 					curPage++;
 				    var pg = calcPage(curPage,totPages);
-				    document.getElementById('pgNum').innerHTML = pg;
+				  document.getElementById('pgNumC').innerHTML = pg[0];				  		  
+				  document.getElementById('pgNumC').style.opacity = "1";
+				  document.getElementById('pgNumT').innerHTML = pg[1];		
+					pageLoad();
 					if(nextUrl == null){						
 						document.getElementById('next-50').disabled = true;
 					}
@@ -329,7 +361,8 @@
 					else{
 						document.getElementById('prev-50').disabled = false;
 					
-					}
+					}					
+				     $('.baseTable').css("opacity","1");				  
 					 $('tbody tr').click(function(){
 				if($(this).hasClass('selected')){
 					$(this).find(".bullCol").css('opacity','0')  
@@ -361,7 +394,10 @@
 				    prevUrl = response.previous;
 					curPage--;
 				    var pg = calcPage(curPage,totPages);
-				    document.getElementById('pgNum').innerHTML = pg;	
+				  document.getElementById('pgNumC').innerHTML = pg[0];				  
+				  document.getElementById('pgNumC').style.opacity = "1";
+				  document.getElementById('pgNumT').innerHTML = pg[1];
+					pageLoad();
 					if(nextUrl == null){						
 						document.getElementById('next-50').disabled = true;
 					}
@@ -374,7 +410,8 @@
 					}
 					else{
 						document.getElementById('prev-50').disabled = false;					
-					}
+					}					
+				     $('.baseTable').css("opacity","1");				  
 					 $('tbody tr').click(function(){
 				if($(this).hasClass('selected')){
 					$(this).find(".bullCol").css('opacity','0')  
